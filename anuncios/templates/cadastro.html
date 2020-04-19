@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block conteudo %}
+<div class="ui grid">
+    <div class="seven wide column">
+        <h1>Cadastro de anúncio</h1>
+        <form class="ui form" method="POST">{% csrf_token %}
+            {% for field in form %}
+            {{ field.errors }}
+            {{ field.label_tag }} <br/>
+            {{ field }} <br/>
+            {% endfor %}
+            <div class="ui divider"></div>
+            <button type="submit" class="ui primary button">Anunciar</button>
+        </form>
+    </div>
+    <div class="two wide column">
+        <div class="ui divider vertical"></div>
+    </div>
+    <div class="seven wide column">
+        <h1>Instruções</h1>
+        <div class="ui list">
+            <div class="item">
+                <div class="content">
+                    <h3 class="header">Título</h3>
+                    <div class="description">Indica qual produto está sendo anunciado. Não se preocupe em passar
+                        informações detalhadas aqui, o título pode conter no máximo 40 caracteres.
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="content">
+                    <h3 class="header">Descrição</h3>
+                    <div class="description">Descreva as especificações do produto e o estado de conservação. Se tiver
+                        interesse em trocas, indique através da descrição. IMPORTANTE: Informe algum meio de contato!
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="content">
+                    <h3 class="header">Preço</h3>
+                    <div class="description">Informe o valor que está pedindo no produto. Você poderá alterar esse valor
+                        se precisar. Caso queira praticar preços diferentes para diferentes formas de pagamento,
+                        use o campo da descrição para esclarecer.
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="content">
+                    <h3 class="header">Categoria</h3>
+                    <div class="description">Selecione a categoria que melhor se encaixa com o produto anunciado.
+                        Caso não encontre uma categoria apropriada, selecione a categoria "Outros".
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

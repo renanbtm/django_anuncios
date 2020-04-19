@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block conteudo %}
+<div class="ui three column stackable grid">
+    {% for anuncio in anuncios %}
+    <div class="column">
+        <div class="ui card fluid">
+            <div class="image">
+                <img src="{% static 'anuncios/img/default.png' %}">
+            </div>
+            <div class="content">
+                <a class="header" href="{% url 'anuncio' anuncio.id %}">{{ anuncio.titulo|truncatechars:28 }}</a>
+                <div class="meta">
+                    <span class="date">Anúncio criado em {{ anuncio.criado_em }}</span>
+                </div>
+                <div style="min-height: 57px" class="description">
+                    {{ anuncio.descricao|truncatechars:100 }}
+                </div>
+            </div>
+            <div class="extra content">
+                <i class="money icon"></i>
+                {{ anuncio.preco }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% if not anuncios %}
+    <p style="margin-top: 10px">Nenhum anúncio encontrado para '{{ valor }}'</p>
+    {% endif %}
+</div>
+{% endblock %}

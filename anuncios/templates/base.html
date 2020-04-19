@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Garage Sales | Homepage</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.4/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.4/dist/semantic.min.js"></script>
+</head>
+
+<body>
+<div class="ui menu">
+    <div class="ui container">
+        <a style="color: gray" class="item" href="{% url 'home' %}"><i class="big green money icon"></i> Garage Sales</a>
+        <div class="right menu" style="padding: 10px">
+            <button onclick="location.href='{% url 'cadastrar' %}'" style="margin-right: 10px" class="ui primary basic button">Anunciar</button>
+            <div class="ui fluid search">
+                <form class="ui form" action="{% url 'pesquisa' %}" method="GET">{% csrf_token %}
+                    <input type="submit" style="width: 1px; height: 1px; border: 0px; padding: 0px; visibility: hidden">
+                    <div class="ui icon input">
+                        <input id="campoPesquisa" name="campoPesquisa" class="prompt" type="text" placeholder="Pesquisar">
+                        <i class="search icon"></i>
+                    </div>
+                </form>
+                <div class="results"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ui hidden divider"></div>
+
+<div class="ui container">
+    <div class="ui grid stackable">
+        <div class="four wide column">
+            <div class="ui vertical pointing menu fluid">
+                {% for categoria in categorias %}
+                <a class="item" href="{% url 'categoria' categoria.id %}">
+                    {{ categoria }}
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="twelve wide column">
+            {% if cat %}
+            <h1>{{ cat }}</h1>
+            {% endif %}
+            {% block conteudo %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+</body>
+</html>
