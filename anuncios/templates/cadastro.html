@@ -5,7 +5,7 @@
 <div class="ui grid">
     <div class="seven wide column">
         <h1>Cadastro de anúncio</h1>
-        <form class="ui form" method="POST">{% csrf_token %}
+        <form class="ui form" method="POST" enctype="multipart/form-data">{% csrf_token %}
             {% for field in form %}
             {{ field.errors }}
             {{ field.label_tag }} <br/>

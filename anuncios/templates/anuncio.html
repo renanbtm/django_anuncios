@@ -14,7 +14,7 @@
         <h1 style="text-align: right; vertical-align: middle">R$ {{ anuncio.preco }}</h1>
     </div>
 </div>
-<img class="ui fluid image" src="{% static 'anuncios/img/default.png' %}">
+<img class="ui fluid image" src="{{ anuncio.imagem.url }}">
 <div style="padding-top: 10px" class="ui stackable grid">
     <div class="ui sixteen wide column">
         {% if anuncio.descricao %}

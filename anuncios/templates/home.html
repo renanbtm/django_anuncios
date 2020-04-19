@@ -7,7 +7,7 @@
     <div class="column">
         <div class="ui card fluid">
             <div class="image">
-                <img src="{% static 'anuncios/img/default.png' %}">
+                <img src="{{ anuncio.imagem.url }}", style="height: 260.734px">
             </div>
             <div class="content">
                 <a class="header" href="{% url 'anuncio' anuncio.id %}">{{ anuncio.titulo|truncatechars:28 }}</a>

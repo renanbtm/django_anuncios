@@ -28,7 +28,7 @@ def anuncio(request, id):
 
 def cadastrar_anuncio(request):
     if request.method == "POST":
-        form = AnuncioForm(request.POST)
+        form = AnuncioForm(request.POST, request.FILES)
         if form.is_valid():
             novo_anuncio = form.save()
             return redirect("anuncio", id=novo_anuncio.id)

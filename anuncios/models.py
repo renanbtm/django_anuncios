@@ -23,6 +23,7 @@ class Anuncio(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     criado_em = models.DateTimeField(auto_now_add=True)
     alterado_em = models.DateTimeField(auto_now=True)
+    imagem = models.ImageField(upload_to="images/", default="", blank=True, null=True)
 
     objects = AnuncioManager()
 
